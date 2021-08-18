@@ -11,10 +11,6 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-type TimeStamp struct {
-	Unix string `json:"unix"`
-	Utf  string `json:"utf"`
-}
 
 func health(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 
@@ -66,7 +62,8 @@ func main() {
 
 	r.GET("/api", health)
 	r.GET("/api/:date", getide)
-	serve := http.Server{
+	
+	serve :=&http.Server{
 		Addr:         ":8000",
 		Handler:      r,
 		ReadTimeout:  10 * time.Second,
