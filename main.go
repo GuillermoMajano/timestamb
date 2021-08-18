@@ -21,7 +21,7 @@ func health(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	if err != nil {
 		w.WriteHeader(http.StatusConflict)
 	}
-
+        w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Write(jts)
@@ -50,7 +50,8 @@ func getide(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	}
 
 	val, _ := json.Marshal(ts[valueid])
-
+        
+	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Write(val)
